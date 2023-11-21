@@ -1,0 +1,93 @@
+@model List<AppWeb_MVC.Models.ClienteModel>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>Gestión de Clientes</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background: #fe8c00;
+            background: -webkit-linear-gradient(to left, #f83600, #fe8c00);
+            background: linear-gradient(to left, #f83600, #fe8c00);
+        }
+
+        .btn-custom-orange {
+            background-color: #2e2a2a;
+            color: white;
+            border: none;
+            float: right;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+        }
+
+        label {
+            color: white;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%; /* Ajusta el ancho al 80% del contenedor */
+            margin: 0 auto; /* Centra horizontalmente el formulario */
+        }
+    </style>
+</head>
+<body>
+    <h1>Gestión de Clientes</h1>
+
+    <div class="container">
+        <a asp-area="" asp-controller="Home" asp-action="IngresarCliente" class="btn btn-custom-orange">Agregar Clientes</a>
+        
+
+        <!-- Tabla de clientes -->
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Rut</th>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Direccion Central</th>
+                    <th>Direccion Secundaria</th>
+                    <th>Telefono</th>
+                    <th>Email</th>
+                    <th>Tipo de cliente</th>
+                    <th>Razon social</th>
+                    <th>Región</th>
+                    <th>Comuna</th>
+                    <th>Sexo</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+            <td>
+                <a href="#" class="btn btn-primary btn-sm">Editar</a>
+                <a href="#" class="btn btn-danger btn-sm">Eliminar</a>
+            </td>
+
+</tbody>
+            
+        </table>
+    </div>
+
+
+
+</body>
+</html>
+

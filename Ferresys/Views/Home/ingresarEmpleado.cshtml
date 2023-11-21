@@ -1,0 +1,170 @@
+@model AppWeb_MVC.Models.EmpleadoModel
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>Gestión de Empleados</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background: #fe8c00;
+            background: -webkit-linear-gradient(to left, #f83600, #fe8c00);
+            background: linear-gradient(to left, #f83600, #fe8c00);
+            margin-bottom: 60px;
+            /* Ajusta según sea necesario */
+        }
+
+        .btn-custom-orange {
+            background-color: rgb(38, 35, 35);
+            color: white;
+            border: none;
+            float: right;
+            margin: 2px;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        label {
+            color: white;
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 0 auto;
+            /* Centra horizontalmente el formulario */
+            max-width: 600px;
+            /* Establece el ancho máximo del formulario */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Agregar Empleado</h1>
+                <form asp-action="agregar_empleado" method="post">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="RutEmpleado">Rut:</label>
+                        <div class="col-sm-9">
+                            <input asp-for="RutEmpleado" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="NombreEmpleado">Nombre:</label>
+                        <div class="col-sm-9">
+                            <input asp-for="NombreEmpleado" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="ApellidoPaternoEmpleado">Apellido
+                            paterno:</label>
+                        <div class="col-sm-9">
+                            <input asp-for="ApellidoPaternoEmpleado" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="ApellidoMaternoEmpleado">Apellido
+                            materno:</label>
+                        <div class="col-sm-9">
+                            <input asp-for="ApellidoMaternoEmpleado" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="DireccionEmpleado">Dirección:</label>
+                        <div class="col-sm-9">
+                            <input asp-for="DireccionEmpleado" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="TelefonoEmpleado">Teléfono:</label>
+                        <div class="col-sm-9">
+                            <input asp-for="TelefonoEmpleado" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="EmailEmpleado">Email:</label>
+                        <div class="col-sm-9">
+                            <input asp-for="EmailEmpleado" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="Sexo">Sexo:</label>
+                        <div class="col-sm-9">
+                            <select asp-for="Sexo" class="form-control">
+                                <option value="1">Masculino</option>
+                                <option value="2">Femenino</option>
+                                <option value="3">Otro</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="RegionesIdRegion">Region:</label>
+                        <div class="col-sm-9">
+                            <select asp-for="RegionesIdRegion" class="form-control">
+                                <option value="1">Linares</option>
+                                <option value="2">Ciudad 2</option>
+                                <option value="3">Ciudad 3</option>
+                                <!-- Agrega las opciones necesarias -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="CiudadesIdCiudad">Ciudad:</label>
+                        <div class="col-sm-9">
+                            <select asp-for="CiudadesIdCiudad" class="form-control">
+                                <option value="1">Linares</option>
+                                <option value="2">Ciudad 2</option>
+                                <option value="3">Ciudad 3</option>
+                                <!-- Agrega las opciones necesarias -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="ComunasIdComuna">Comuna:</label>
+                        <div class="col-sm-9">
+                            <select asp-for="ComunasIdComuna" class="form-control">
+                                <option value="1">Linares</option>
+                                <option value="2">Comuna 2</option>
+                                <option value="3">Comuna 3</option>
+                                <!-- Agrega las opciones necesarias -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="imagen_empleado">Imagen:</label>
+                        <div class="col-sm-9">
+                            <input type="file" id="imagen_empleado" name="imagen_empleado">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-custom-orange" id="btnCrearEmpleado">Crear Empleado</button>
+                    </div>
+                </form>
+</body>
+
+</html>

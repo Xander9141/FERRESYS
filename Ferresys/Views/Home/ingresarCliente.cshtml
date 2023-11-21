@@ -1,0 +1,228 @@
+@model AppWeb_MVC.Models.ClienteModel
+@if (TempData["MensajeExito"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["MensajeExito"]
+    </div>
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>Gestión de Clientes</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <style>
+        body {
+            background: #fe8c00;
+            background: -webkit-linear-gradient(to left, #f83600, #fe8c00);
+            background: linear-gradient(to left, #f83600, #fe8c00);
+            margin-bottom: 60px;
+            /* Ajusta según sea necesario */
+        }
+
+        .btn-custom-orange {
+            background-color: rgb(38, 35, 35);
+            color: white;
+            border: none;
+            float: right;
+            margin: 2px;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        label {
+            color: white;
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 0 auto;
+            /* Centra horizontalmente el formulario */
+            max-width: 600px;
+            /* Establece el ancho máximo del formulario */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Agregar Clientes</h1>
+                <form asp-controller="Home" asp-action="AgregarCliente" method="post">
+                    <!-- Rut -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="rut_cliente">Rut:</label>
+                        <div class="col-sm-9">
+                            <input asp-for="rut_cliente" class="form-control" required>
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.rut_cliente)</span>
+                        </div>
+                    </div>
+
+                    <!-- Nombre -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="nombre_cliente">Nombre:</label>
+                        <div class="col-sm-9">
+                            <input asp-for="nombre_cliente" class="form-control" required>
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.nombre_cliente)</span>
+                        </div>
+                    </div>
+
+                    <!-- Apellido Paterno -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="apellido_paterno_cliente">Apellido paterno:</label>
+                        <div class="col-sm-9">
+                            <input asp-for="apellido_paterno_cliente" class="form-control" required>
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.apellido_paterno_cliente)</span>
+                        </div>
+                    </div>
+
+                    <!-- Apellido Materno -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="apellido_materno_cliente">Apellido materno:</label>
+                        <div class="col-sm-9">
+                            <input asp-for="apellido_materno_cliente" class="form-control" required>
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.apellido_materno_cliente)</span>
+                        </div>
+                    </div>
+
+                    <!-- Dirección Central -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="direccion_central_cliente">Direccion central:</label>
+                        <div class="col-sm-9">
+                            <input asp-for="direccion_central_cliente" class="form-control" required>
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.direccion_central_cliente)</span>
+                        </div>
+                    </div>
+
+                    <!-- Dirección Secundaria -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="direccion_secundaria_cliente">Direccion secundaria:</label>
+                        <div class="col-sm-9">
+                            <input asp-for="direccion_secundaria_cliente" class="form-control" required>
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.direccion_secundaria_cliente)</span>
+                        </div>
+                    </div>
+
+                    <!-- Teléfono -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="telefono_cliente">Telefono:</label>
+                        <div class="col-sm-9">
+                            <input asp-for="telefono_cliente" class="form-control" required>
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.telefono_cliente)</span>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="email_cliente">Email:</label>
+                        <div class="col-sm-9">
+                            <input asp-for="email_cliente" class="form-control" required>
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.email_cliente)</span>
+                        </div>
+                    </div>
+
+                    <!-- Sexo -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="IdSexo">Sexo:</label>
+                        <div class="col-sm-9">
+                            <select asp-for="IdSexo" class="form-control">
+                                <option value="">Seleccionar</option>
+                                <option value="1">Masculino</option>
+                                <option value="2">Femenino</option>
+                            </select>
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.Sexo)</span>
+                        </div>
+                    </div>
+
+                    <!-- Razón Social -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="IdRazonSocial">Razón Social:</label>
+                        <div class="col-sm-9">
+                            <select asp-for="IdRazonSocial" class="form-control">
+                                <option value="">Seleccionar</option>
+                                <option value="1">Persona Natural</option>
+                                <option value="2">Persona Jurídica</option>
+                            </select>
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.IdRazonSocial)</span>
+                        </div>
+                    </div>
+
+                    <!-- Tipo de Cliente -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="IdTipoCliente">Tipo de Cliente:</label>
+                        <div class="col-sm-9">
+                            <select asp-for="IdTipoCliente" class="form-control">
+                                <option value="">Seleccionar</option>
+                                <option value="1">Minorista</option>
+                                <option value="2">Mayorista</option>
+                            </select>
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.IdTipoCliente)</span>
+                        </div>
+                    </div>
+
+                    <!-- Región -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="IdRegion">Región:</label>
+                        <div class="col-sm-9">
+                            <select asp-for="IdRegion" class="form-control">
+                                <option value="">Seleccionar</option>
+                                <option value="1">Región de Arica y Parinacota</option>
+                                <option value="2">Región de Tarapacá</option>
+                                <option value="3">Región de Antofagasta</option>
+                                <option value="4">Región de Atacama</option>
+                                <option value="5">Región de Coquimbo</option>
+                                <option value="6">Región de Valparaíso</option>
+                                <option value="7">Región Metropolitana</option>
+                                <option value="8">Región de O’Higgins</option>
+                                <option value="9">Región del Maule</option>
+                                <option value="10">Región del Ñuble</option>
+                                <option value="11">Región del Biobío</option>
+                                <option value="12">Región de La Araucanía</option>
+                                <option value="13">Región de Los Ríos</option>
+                                <option value="14">Región de Los Lagos</option>
+                                <option value="15">Región de Aysén</option>
+                                <option value="16">Región de Magallanes</option>
+                            </select>
+                            </select>
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.IdRegion)</span>
+                        </div>
+                    </div>
+
+                    <!-- Comuna -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="IdComuna">Comuna:</label>
+                        <div class="col-sm-9">
+                            <select asp-for="IdComuna" class="form-control">
+                                <option value="">Seleccionar</option>
+                                <option value="1">Arica </option><!-- Agrega opciones según tus datos -->
+                            </select>
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.IdComuna)</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-custom-orange" id="btnCrearCliente">Crear Cliente</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

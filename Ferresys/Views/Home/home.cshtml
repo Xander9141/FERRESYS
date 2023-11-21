@@ -1,0 +1,133 @@
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Página de Inicio</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        .btn-custom-orange {
+            background-color: #FFA500;
+            color: white;
+            border: none;
+        }
+
+        body {
+            background: #0F2027;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background-color: rgb(42, 38, 38);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" style="margin-top: 30px;">
+        <div class="row" id="cardContainer">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <img src="~/images/gestion-clientes.png" alt="Logo" style="max-width: 150px;" />
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Clientes</h5>
+                        <a asp-area="" asp-controller="Home" asp-action="GestionCliente"
+                            class="btn btn-custom-orange">Gestionar Clientes</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <img src="~/images/equipo.png" alt="Logo" style="max-width: 150px;" />
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Empleados</h5>
+                        <a asp-area="" asp-controller="Home" asp-action="GestionEmpleados"
+                            class="btn btn-custom-orange">Gestionar Empleados</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <img src="~/images/gestion-proveedores.png" alt="Logo" style="max-width: 150px;" />
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Proveedores</h5>
+                        <a asp-area="" asp-controller="Home" asp-action="GestionProveedor"
+                            class="btn btn-custom-orange">Gestionar Proveedores</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <img src="~/images/gestion-bodegas.png" alt="Logo" style="max-width: 150px;" />
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Bodegas</h5>
+                        <a asp-area="" asp-controller="Home" asp-action="GestionBodega"
+                            class="btn btn-custom-orange">Gestionar Bodegas</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <img src="~/images/gestion-productos.png" alt="Logo" style="max-width: 150px;" />
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Productos</h5>
+                        <a asp-area="" asp-controller="Home" asp-action="GestionProducto"
+                            class="btn btn-custom-orange">Gestionar Productos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Hacer que las tarjetas sean arrastrables
+        $(function () {
+            $(".card").draggable({
+                revert: "invalid",
+                cursor: "grabbing",
+                helper: "clone"
+            });
+            $("#cardContainer").droppable({
+                accept: ".card",
+                drop: function (event, ui) {
+                    // Mover la tarjeta al nuevo contenedor
+                    var droppedElement = ui.helper.clone();
+                    $(this).append(droppedElement);
+                    ui.helper.remove();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

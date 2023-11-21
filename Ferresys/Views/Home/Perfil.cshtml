@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Perfil de Empleado</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background: #fe8c00;
+            background: -webkit-linear-gradient(to left, #f83600, #fe8c00);
+            background: linear-gradient(to left, #f83600, #fe8c00);
+            color: white;
+        }
+
+        .tab-content {
+            margin-top: 20px;
+            background-color: white;
+            color: #f83600;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.2);
+            margin-bottom: 20px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="basic" aria-selected="true" style="color: black">Información Básica</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="details-tab" data-toggle="tab" href="#details" role="tab" aria-controls="details" aria-selected="false" style="color: black">Detalles</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="location-tab" data-toggle="tab" href="#location" role="tab" aria-controls="location" aria-selected="false" style="color: black">Ubicación</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="salary-tab" data-toggle="tab" href="#salary" role="tab" aria-controls="salary" aria-selected="false" style="color: black">Salario</a>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="basic" role="tabpanel" aria-labelledby="basic-tab">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Perfil</h5>
+                                <p><strong>Id empleado:</strong> 1</p>
+                                <img src="~/images/cv2.jpg" alt="Imagen de Empleado" style="max-width: 200px;" />
+                                <p><strong>Rut:</strong> 12345-6</p>
+                                <p><strong>Nombre:</strong> Juan</p>
+                                <p><strong>Apellido Paterno:</strong> Perez</p>
+                                <p><strong>Apellido Materno:</strong> Monagas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="details" role="tabpanel" aria-labelledby="details-tab">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Detalles del Empleado</h5>
+                                <p><strong>Dirección:</strong> Los Cristales</p>
+                                <p><strong>Teléfono:</strong> 963852741</p>
+                                <p><strong>Email:</strong> empleado@admin.cl</p>
+                                <p><strong>Fecha de contratación:</strong> 12/06/2023</p>
+                                <p><strong>Cargo:</strong> Admin</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="location" role="tabpanel" aria-labelledby="location-tab">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Ubicación</h5>
+                                <p><strong>Región:</strong> Metropolitana</p>
+                                <p><strong>Ciudad:</strong> Santiago</p>
+                                <p><strong>Comuna:</strong> Las Condes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="salary" role="tabpanel" aria-labelledby="salary-tab">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Salario</h5>
+                                <p><strong>Sueldo:</strong> 450.000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            
+            </body>
+            </html>

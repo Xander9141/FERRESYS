@@ -1,0 +1,90 @@
+@model IEnumerable<AppWeb_MVC.Models.EmpleadoModel>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>Gestión de Empleados</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background: #fe8c00;
+            background: -webkit-linear-gradient(to left, #f83600, #fe8c00);
+            background: linear-gradient(to left, #f83600, #fe8c00);
+        }
+
+        .btn-custom-orange {
+            background-color: #2e2a2a;
+            color: white;
+            border: none;
+            float: right;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+        }
+
+        label {
+            color: white;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%; /* Ajusta el ancho al 80% del contenedor */
+            margin: 0 auto; /* Centra horizontalmente el formulario */
+        }
+
+        .table th, .table td {
+            color: white;
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1>Gestión de Empleados</h1>
+
+    <div class="container">
+        <a asp-area="" asp-controller="Home" asp-action="IngresarEmpleado" class="btn btn-custom-orange">Agregar Empleado</a>
+        
+
+        <!-- Tabla de empleados -->
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Rut</th>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Dirección</th>
+                    <th>Teléfono</th>
+                    <th>Email</th>
+                    <th>Fecha Creación</th>
+                    <th>Fecha Actualización</th>
+                    <th>Usuario</th>
+                    <th>Tipo de Empleado</th>
+                    <th>Región</th>
+                    <th>Ciudad</th>
+                    <th>Sueldo</th>
+                </tr>
+            </thead>
+            
+        </table>
+    </div>
+</body>
+</html>
