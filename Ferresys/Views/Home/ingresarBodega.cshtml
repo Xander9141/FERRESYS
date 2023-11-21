@@ -1,0 +1,129 @@
+@model Ferresys.Models.BodegaModel
+
+@if (TempData["MensajeExito"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["MensajeExito"]
+    </div>
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>Gestión de Bodegas</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <style>
+        body {
+            background: #fe8c00;
+            background: -webkit-linear-gradient(to left, #f83600, #fe8c00);
+            background: linear-gradient(to left, #f83600, #fe8c00);
+            margin-bottom: 60px;
+            /* Ajusta según sea necesario */
+        }
+
+        .btn-custom-orange {
+            background-color: rgb(38, 35, 35);
+            color: white;
+            border: none;
+            float: right;
+            margin: 2px;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        label {
+            color: white;
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 0 auto;
+            /* Centra horizontalmente el formulario */
+            max-width: 600px;
+            /* Establece el ancho máximo del formulario */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Ingresar Bodega</h1>
+                <form asp-controller="Home" asp-action="IngresarBodega" method="post">
+                    <!-- Descripción de Bodega -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="DescripcionBodega">Descripción de Bodega:</label>
+                        <div class="col-sm-9">
+                            <input asp-for="DescripcionBodega" class="form-control" required>
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.DescripcionBodega)</span>
+                        </div>
+                    </div>
+
+                    <!-- Dirección de Bodega -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="DireccionBodega">Dirección de Bodega:</label>
+                        <div class="col-sm-9">
+                            <input asp-for="DireccionBodega" class="form-control" required>
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.DireccionBodega)</span>
+                        </div>
+                    </div>
+
+                    <!-- Fecha de Creación -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="FechaCreacion">Fecha de Creación:</label>
+                        <div class="col-sm-9">
+                            <input asp-for="FechaCreacion" type="date" class="form-control" required>
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.FechaCreacion)</span>
+                        </div>
+                    </div>
+
+                    <!-- Fecha de Actualización -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="FechaActualizacion">Fecha de Actualización:</label>
+                        <div class="col-sm-9">
+                            <input asp-for="FechaActualizacion" type="date" class="form-control" required>
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.FechaActualizacion)</span>
+                        </div>
+                    </div>
+
+                    <!-- Región -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="RegionId">Región:</label>
+                        <div class="col-sm-9">
+                            <select asp-for="RegionId" class="form-control">
+                                <option value="">Seleccionar</option>
+                                <option value="1">Región de Arica y Parinacota</option>
+                                <option value="2">Región de Tarapacá</option>
+                                <option value="3">Región de Antofagasta</option>
+                                <!-- Agrega más opciones según tus datos -->
+                            </select>
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.RegionId)</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-custom-orange" id="btnIngresarBodega">Ingresar Bodega</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

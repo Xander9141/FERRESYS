@@ -1,124 +1,96 @@
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+@model List<Ferresys.Models.ProductoModel>
+
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width" />
-    <title>Gestión de Productos</title>
+    <title>Gestión de Clientes</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <style>
         body {
-            background: #fe8c00; /* Fondo degradado */
-            background: -webkit-linear-gradient(to left, #f83600, #fe8c00);
-            background: linear-gradient(to left, #f83600, #fe8c00);
+            background: #0F2027;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+            margin-bottom: 60px;
         }
 
         .btn-custom-orange {
-            background-color: #FFA500; /* Color de botón naranja */
-            color: white; /* Color del texto en el botón */
-            border: none; /* Sin borde */
+            background-color: #2e2a2a;
+            color: white;
+            border: none;
+            float: right;
         }
 
-        h1, h2, label {
-            color: white; /* Color de texto blanco */
+        h1 {
+            color: white;
             text-align: center;
         }
 
-        input[type="text"], select {
+        label {
+            color: white;
+        }
+
+        input[type="text"],
+        select {
             width: 100%;
+            margin-bottom: 10px;
+            padding: 5px;
+            border-radius: 5px;
         }
 
         form {
-            background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente */
+            background-color: rgba(255, 255, 255, 0.2);
             padding: 20px;
             border-radius: 10px;
-            width: 50%; /* Ajusta el ancho al 50% del contenedor */
+            width: 50%; /* Ajusta el ancho al 80% del contenedor */
             margin: 0 auto; /* Centra horizontalmente el formulario */
         }
     </style>
 </head>
 <body>
-    <h1>Gestión de Productos</h1>
+    <h1>Gestión Productos</h1>
+
+    <div class="container">
+        <a asp-area="" asp-controller="Home" asp-action="IngresarBodega" class="btn btn-custom-orange">Agregar Bodega</a>
+        
+
+        <!-- Tabla de clientes -->
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre producto</th>
+                    <th>Descripcion</th>
+                    <th>Valor</th>
+                    <th>Marca</th>
+                    <th>Color</th>
+                    <th>Tiempo de garantia</th>
+                    <th>Stock</th>
+                    <th>Bodega</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
     
+            <td>
+                <a href="#" class="btn btn-primary btn-sm">Editar</a>
+                <a href="#" class="btn btn-danger btn-sm">Eliminar</a>
+            </td>
 
-    <form action="agregar_producto" method="post">
-        <div>
-            <label for="nombre_producto">Nombre del Producto:</label>
-            <input type="text" id="nombre_producto" name="nombre_producto" required>
-        </div>
-        <br />
-
-
-        <div style="display: flex; justify-content: space-between;">
-            <div>
-                <label for="valor_compra">Valor de Compra:</label>
-                <input type="text" id="valor_compra" name="valor_compra" required>
-            </div>
-
-            <div>
-                <label for="valor_venta">Valor de Venta:</label>
-                <input type="text" id="valor_venta" name="valor_venta" required>
-            </div>
-        </div>
-
-        <div style="display: flex; justify-content: space-between;">
-            <div>
-                <label for="id_bodega">Bodega:</label>
-                <select id="id_bodega" name="id_bodega">
-                    <option value="1">Bodega 1</option>
-                    <option value="2">Bodega 2</option>
-                    <option value="3">Bodega 3</option>
-                    <!-- Agrega las opciones necesarias -->
-                </select>
-            </div>
-
-            <div>
-                <label for="id_proveedor">Proveedor:</label>
-                <select id="id_proveedor" name="id_proveedor">
-                    <option value="1">Proveedor 1</option>
-                    <option value="2">Proveedor 2</option>
-                    <option value="3">Proveedor 3</option>
-                    <!-- Agrega las opciones necesarias -->
-                </select>
-            </div>
-        </div>
-        <br />
-        <div style="display: flex; justify-content: space-between;">
-
-            <div>
-                <label for="stock">Stock:</label>
-                <input type="text" id="stock" name="stock" required>
-            </div>
-
-            <div>
-               <label for="sexo">Sexo:</label>
-               <select id="sexo" name="sexo">
-                     <option value="1">Masculino</option>
-                     <option value="2">Femenino</option>
-                     <option value="3">Otro</option>
-                </select>
-             </div>
-       </div>
-
-            <div>
-                <label for="descripcion_producto">Descripción del Producto:</label>
-                <br />
-                <textarea id="descripcion_producto" name="descripcion_producto" rows="4"></textarea>
-            </div>
-         
-        <br />
-    </form>
-
-    <!-- Botones para CRUD -->
-    <div style="text-align: center;">
-        <button class="btn btn-custom-orange" id="btnCrearProducto">Crear Producto</button>
-        <button class="btn btn-custom-orange" id="btnModificarProducto">Modificar Producto</button>
-        <button class="btn btn-custom-orange" id="btnEliminarProducto">Eliminar Producto</button>
-        <button class="btn btn-custom-orange" id="btnLeerProductos">Leer Productos</button>
+</tbody>
+            
+        </table>
     </div>
+
+
+
 </body>
 </html>
+

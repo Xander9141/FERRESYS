@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Text.Encodings.Web;
 using Microsoft.EntityFrameworkCore;
 
-namespace AppWeb_MVC.Controllers
+namespace Ferresys.Controllers
 {
     public class HomeController : Controller
     {
@@ -72,6 +72,13 @@ public IActionResult AgregarCliente(ClienteModel model)
     else
     {
         Console.WriteLine("Aqui fuimos");
+        // Populate dropdown lists
+        ViewBag.Sexos = _context.Sexo.ToList();  
+        ViewBag.RazonSocial = _context.RazonSocial.ToList();
+        ViewBag.TipoClientes = _context.TipoClientes.ToList();
+        ViewBag.Regiones = _context.Regiones.ToList();
+        ViewBag.Comunas = _context.Comunas.ToList();
+
         foreach (var modelStateKey in ModelState.Keys)
         {
             var modelStateVal = ModelState[modelStateKey];
@@ -89,9 +96,70 @@ public IActionResult AgregarCliente(ClienteModel model)
 
         public IActionResult GestionCliente()
         {
-            var listaClientes = _context.Clientes.ToList();
-            return View(listaClientes);
+            
+            return View("GestionarCliente");
         }
+        public IActionResult gestionarEmpleado()
+        {
+            
+            return View("gestionarEmpleado");
+        }
+        public IActionResult gestionarBodega()
+        {
+            
+            return View("gestionarBodega");
+        }
+        public IActionResult gestionarProveedor()
+        {
+            
+            return View("gestionarProveedor");
+        }
+        public IActionResult gestionarProducto()
+        {
+            
+            return View("gestionarProducto");
+        }
+        public IActionResult Perfil()
+        {
+            
+            return View("Perfil");
+        }
+
+        public IActionResult IngresarEmpleado()
+        {
+            var nuevoEmpleado = new EmpleadoModel();
+            return View(nuevoEmpleado);
+        }
+
+        public IActionResult AgregarEmpleado(EmpleadoModel modele)
+{
+    if (ModelState.IsValid)
+    {
+        Console.WriteLine("Aqui estamos");
+        _context.Empleados.Add(modele);
+        _context.SaveChanges();
+    }
+    else
+    {
+        Console.WriteLine("Aqui fuimos");
+        // Populate dropdown lists
+        ViewBag.Sexos = _context.Sexo.ToList();  
+        ViewBag.Regiones = _context.Regiones.ToList();
+        ViewBag.Comunas = _context.Comunas.ToList();
+
+        foreach (var modelStateKey in ModelState.Keys)
+        {
+            var modelStateVal = ModelState[modelStateKey];
+            foreach (var error in modelStateVal.Errors)
+            {
+                Console.WriteLine($"{modelStateKey}: {error.ErrorMessage}");
+            }
+        }
+        return View("IngresarEmpleado", modele);
+    }
+
+    return View("GestionEmpleado");
+}
 
 
     }

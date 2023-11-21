@@ -1,4 +1,4 @@
-@model AppWeb_MVC.Models.EmpleadoModel
+@model Ferresys.Models.EmpleadoModel
 
 <!DOCTYPE html>
 <html>
@@ -10,11 +10,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <style>
         body {
-            background: #fe8c00;
-            background: -webkit-linear-gradient(to left, #f83600, #fe8c00);
-            background: linear-gradient(to left, #f83600, #fe8c00);
+            background: #0F2027;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
             margin-bottom: 60px;
-            /* Ajusta según sea necesario */
         }
 
         .btn-custom-orange {
@@ -56,115 +60,56 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>Agregar Empleado</h1>
-                <form asp-action="agregar_empleado" method="post">
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label" asp-for="RutEmpleado">Rut:</label>
-                        <div class="col-sm-9">
-                            <input asp-for="RutEmpleado" class="form-control" required>
-                        </div>
-                    </div>
+                <form asp-action="AgregarEmpleado" method="post">
+                    <!-- Campos del formulario -->
+                    <!-- ... (otros campos) ... -->
 
+                    <!-- Sexo -->
                     <div class="form-group row">
-                        <label class="col-sm-3 col-form-label" asp-for="NombreEmpleado">Nombre:</label>
+                        <label class="col-sm-3 col-form-label" asp-for="IdSexo">Sexo:</label>
                         <div class="col-sm-9">
-                            <input asp-for="NombreEmpleado" class="form-control" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label" asp-for="ApellidoPaternoEmpleado">Apellido
-                            paterno:</label>
-                        <div class="col-sm-9">
-                            <input asp-for="ApellidoPaternoEmpleado" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label" asp-for="ApellidoMaternoEmpleado">Apellido
-                            materno:</label>
-                        <div class="col-sm-9">
-                            <input asp-for="ApellidoMaternoEmpleado" class="form-control" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label" asp-for="DireccionEmpleado">Dirección:</label>
-                        <div class="col-sm-9">
-                            <input asp-for="DireccionEmpleado" class="form-control" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label" asp-for="TelefonoEmpleado">Teléfono:</label>
-                        <div class="col-sm-9">
-                            <input asp-for="TelefonoEmpleado" class="form-control" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label" asp-for="EmailEmpleado">Email:</label>
-                        <div class="col-sm-9">
-                            <input asp-for="EmailEmpleado" class="form-control" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label" asp-for="Sexo">Sexo:</label>
-                        <div class="col-sm-9">
-                            <select asp-for="Sexo" class="form-control">
-                                <option value="1">Masculino</option>
-                                <option value="2">Femenino</option>
-                                <option value="3">Otro</option>
+                            <select asp-for="IdSexo" class="form-control">
+                                <option value="">Seleccionar</option>
+                                @foreach (var sexo in ViewBag.Sexos)
+                                {
+                                    <option value="@sexo.Id">@sexo.Nombre</option>
+                                }
                             </select>
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.IdSexo)</span>
                         </div>
                     </div>
 
+                    <!-- Razón Social -->
+                    <!-- ... (otros campos de selección) ... -->
+
+                    <!-- Tipo de Empleado -->
                     <div class="form-group row">
-                        <label class="col-sm-3 col-form-label" asp-for="RegionesIdRegion">Region:</label>
+                        <label class="col-sm-3 col-form-label" asp-for="IdTipoEmpleado">Tipo de Empleado:</label>
                         <div class="col-sm-9">
-                            <select asp-for="RegionesIdRegion" class="form-control">
-                                <option value="1">Linares</option>
-                                <option value="2">Ciudad 2</option>
-                                <option value="3">Ciudad 3</option>
-                                <!-- Agrega las opciones necesarias -->
+                            <select asp-for="IdTipoEmpleado" class="form-control">
+                                <option value="">Seleccionar</option>
+                                @foreach (var tipoEmpleado in ViewBag.TipoEmpleados)
+                                {
+                                    <option value="@tipoEmpleado.Id">@tipoEmpleado.Nombre</option>
+                                }
                             </select>
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.IdTipoEmpleado)</span>
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label" asp-for="CiudadesIdCiudad">Ciudad:</label>
-                        <div class="col-sm-9">
-                            <select asp-for="CiudadesIdCiudad" class="form-control">
-                                <option value="1">Linares</option>
-                                <option value="2">Ciudad 2</option>
-                                <option value="3">Ciudad 3</option>
-                                <!-- Agrega las opciones necesarias -->
-                            </select>
-                        </div>
-                    </div>
+                    <!-- Región -->
+                    <!-- ... (otros campos de selección) ... -->
 
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label" asp-for="ComunasIdComuna">Comuna:</label>
-                        <div class="col-sm-9">
-                            <select asp-for="ComunasIdComuna" class="form-control">
-                                <option value="1">Linares</option>
-                                <option value="2">Comuna 2</option>
-                                <option value="3">Comuna 3</option>
-                                <!-- Agrega las opciones necesarias -->
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label" for="imagen_empleado">Imagen:</label>
-                        <div class="col-sm-9">
-                            <input type="file" id="imagen_empleado" name="imagen_empleado">
-                        </div>
-                    </div>
+                    <!-- Comuna -->
+                    <!-- ... (otros campos de selección) ... -->
 
                     <div class="form-group">
                         <button class="btn btn-custom-orange" id="btnCrearEmpleado">Crear Empleado</button>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

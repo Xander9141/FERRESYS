@@ -1,0 +1,139 @@
+@model Ferresys.Models.ProductoModel
+
+@if (TempData["MensajeExito"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["MensajeExito"]
+    </div>
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>Ingresar Producto</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <style>
+        body {
+            background: #0F2027;
+            background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);
+            background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
+            margin-bottom: 60px;
+        }
+
+        .btn-custom-orange {
+            background-color: rgb(38, 35, 35);
+            color: white;
+            border: none;
+            float: right;
+            margin: 2px;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        label {
+            color: white;
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Ingresar Producto</h1>
+                <form asp-controller="Home" asp-action="IngresarProducto" method="post">
+                    <!-- Nombre de Producto -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="NombreProducto">Nombre de Producto:</label>
+                        <div class="col-sm-9">
+                            <input asp-for="NombreProducto" class="form-control" required>
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.NombreProducto)</span>
+                        </div>
+                    </div>
+
+                    <!-- Descripción de Producto -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="DescripcionProducto">Descripción de Producto:</label>
+                        <div class="col-sm-9">
+                            <textarea asp-for="DescripcionProducto" class="form-control" rows="3" required></textarea>
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.DescripcionProducto)</span>
+                        </div>
+                    </div>
+
+                    <!-- Valor de Compra -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="ValorCompra">Valor de Compra:</label>
+                        <div class="col-sm-9">
+                            <input asp-for="ValorCompra" class="form-control" type="number" required>
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.ValorCompra)</span>
+                        </div>
+                    </div>
+
+                    <!-- Valor de Venta -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="ValorVenta">Valor de Venta:</label>
+                        <div class="col-sm-9">
+                            <input asp-for="ValorVenta" class="form-control" type="number" required>
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.ValorVenta)</span>
+                        </div>
+                    </div>
+
+                    <!-- Fecha Creación -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Fecha Creación:</label>
+                        <div class="col-sm-9">
+                            <input asp-for="fecha_creacion" class="form-control" readonly>
+                        </div>
+                    </div>
+
+                    <!-- Fecha Actualización -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Fecha Actualización:</label>
+                        <div class="col-sm-9">
+                            <input asp-for="fecha_actualizacion" class="form-control" readonly>
+                        </div>
+                    </div>
+
+                    <!-- Bodega -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="BodegasIdBodega">Bodega:</label>
+                        <div class="col-sm-9">
+                            <select asp-for="BodegasIdBodega" class="form-control">
+                                <option value="">Seleccionar</option>
+                                <!-- Agrega opciones según tus datos -->
+                            </select>
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.BodegasIdBodega)</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-custom-orange" id="btnIngresarProducto">Ingresar Producto</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

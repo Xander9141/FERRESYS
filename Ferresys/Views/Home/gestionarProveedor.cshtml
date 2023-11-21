@@ -1,4 +1,4 @@
-@model AppWeb_MVC.Models.ProveedorModel
+@model Ferresys.Models.ProveedorModel
 
 <!DOCTYPE html>
 <html>
@@ -9,9 +9,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <style>
         body {
-            background: #fe8c00;
-            background: -webkit-linear-gradient(to left, #f83600, #fe8c00);
-            background: linear-gradient(to left, #f83600, #fe8c00);
+            background: #0F2027;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+            margin-bottom: 60px;
         }
 
         .btn-custom-orange {
@@ -71,6 +77,12 @@
                     <th>Comuna</th>
                 </tr>
             </thead>
+            <tbody>
+                <td>
+                <a href="#" class="btn btn-primary btn-sm">Editar</a>
+                <a href="#" class="btn btn-danger btn-sm">Eliminar</a>
+            </td>
+            </tbody>
             
         </table>
     </div>

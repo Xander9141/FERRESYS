@@ -1,9 +1,10 @@
 #pragma warning disable CS8618
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
+
 namespace Ferresys.Models
 {
-
-
     public class ApplicationDbContext : DbContext
     {
 
@@ -34,3 +35,5 @@ namespace Ferresys.Models
             : base(options)
         {
         }
+    }
+}

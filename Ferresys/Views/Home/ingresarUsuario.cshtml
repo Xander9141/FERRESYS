@@ -1,0 +1,116 @@
+@model Ferresys.Models.UsuarioModel
+
+@if (TempData["MensajeExito"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["MensajeExito"]
+    </div>
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>Agregar Usuario</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <style>
+        body {
+            background: #0F2027;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        }
+
+        .btn-custom-orange {
+            background-color: rgb(38, 35, 35);
+            color: white;
+            border: none;
+            float: right;
+            margin: 2px;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        label {
+            color: white;
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 0 auto;
+            /* Centra horizontalmente el formulario */
+            max-width: 600px;
+            /* Establece el ancho máximo del formulario */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Gestionar Usuario</h1>
+                <form asp-controller="Home" asp-action="GestionarUsuario" method="post">
+                    <!-- Usuario -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="Usuario">Usuario:</label>
+                        <div class="col-sm-9">
+                            <input asp-for="Usuario" class="form-control" required>
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.Usuario)</span>
+                        </div>
+                    </div>
+
+                    <!-- Contraseña -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="Password">Contraseña:</label>
+                        <div class="col-sm-9">
+                            <input asp-for="Password" type="password" class="form-control" required>
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.Password)</span>
+                        </div>
+                    </div>
+
+                    <!-- Fecha de Creación -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="FechaCreacion">Fecha de Creación:</label>
+                        <div class="col-sm-9">
+                            <input asp-for="FechaCreacion" type="date" class="form-control" required>
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.FechaCreacion)</span>
+                        </div>
+                    </div>
+
+                    <!-- Fecha de Actualización -->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="FechaActualizacion">Fecha de Actualización:</label>
+                        <div class="col-sm-9">
+                            <input asp-for="FechaActualizacion" type="date" class="form-control">
+                            <span class="text-danger">@Html.ValidationMessageFor(model => model.FechaActualizacion)</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-custom-orange" id="btnAgregarUsuario">Agregar Usuario</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

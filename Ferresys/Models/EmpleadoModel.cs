@@ -1,3 +1,4 @@
+#pragma warning disable CS8618
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -73,16 +74,16 @@ namespace Ferresys.Models
 
         [ForeignKey("Sexo")]
         public int Sexo { get; set; }
+        public int IdSexo { get; set; }
 
         [Column("imagen_empleado")]
         public byte[] ImagenEmpleado { get; set; }
 
         // Relación con el Tipo de Empleado
         public TipoEmpleadoModel TipoEmpleado { get; set; }
-
-        // Relación con la Comuna
+        public int IdTipoEmpleado { get; set; }
         public ComunaModel Comuna { get; set; }
-
+        public int IdComuna { get; set; }
         // Relación con el Sexo
         public SexoModel SexoEmpleado { get; set; }
     }
